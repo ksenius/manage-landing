@@ -1,0 +1,7 @@
+@mixin screen-sm {
+  @media (min-width: 1000px) { @content; }
+}
+
+@mixin screen-lg {
+  @media (min-width: 1200px) { @content; }
+}
