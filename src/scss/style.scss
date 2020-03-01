@@ -3,6 +3,8 @@
 
 @import-normalize;
 
+/** General */
+
 html {
   font-size: 10px;
 }
@@ -14,5 +16,35 @@ body {
     family: 'Be Vietnam', arial, sans-serif;
     size: 1.6rem;
   };
+  line-height: 1.625;
   background: #fff;
+  color: $grayish-blue;
+  overflow-x: hidden;
+}
+
+.heading {
+  margin: 0;
+  color: $dark-blue;
+  font-weight: 700;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.screen-reader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  border: 0;
+  padding: 0;
+}
+
+.container {
+  width: calc(100% - 50px);
+  max-width: 1110px;
+  margin: 0 auto;
 }

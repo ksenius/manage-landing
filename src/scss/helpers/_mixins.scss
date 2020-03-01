@@ -2,6 +2,20 @@
   @media (min-width: 1000px) { @content; }
 }
 
-@mixin screen-lg {
+@mixin screen-md {
   @media (min-width: 1200px) { @content; }
+}
+
+@mixin media($min, $max: null) {
+  @if ($min == null) {
+    @media (max-width: $max) { @content; }
+  }
+
+  @else if ($max == null) {
+    @media (min-width: $min) { @content; }
+  }
+
+  @else {
+    @media (min-width: $min) and (max-width: $max) { @content; }
+  }
 }
