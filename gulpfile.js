@@ -85,13 +85,31 @@ function jsTask() {
     .on('end', browserSync.reload);
 }
 
+function jsLibsTask() {
+  return src(['./node_modules/svgxuse/svgxuse.min.js'])
+    .pipe(gp.concat('vendor.min.js'))
+    .pipe(dest(paths.js.dest));
+}
+
 function imagesTask() {
   return src(paths.images.src)
-    .pipe(dest(paths.images.dest));
+    .pipe(dest(paths.images.dest))
+    .on('end', browserSync.reload);
 }
 
 function svgSpriteTask() {
   return src(paths.socialIcons.src)
+    .pipe(gp.imagemin([
+      gp.imagemin.svgo({
+        plugins: [
+          {
+            removeAttrs: {
+              attrs: 'path:fill'
+            }
+          }
+        ]
+      })
+    ]))
     .pipe(gp.svgSprite({
       mode: {
         symbol: {
@@ -99,13 +117,16 @@ function svgSpriteTask() {
         }
       }
     }))
-    .pipe(dest(paths.images.dest));
+    .pipe(dest(paths.images.dest))
+    .on('end', browserSync.reload);
 }
 
 function watchTask() {
   watch(paths.html.src, htmlTask);
   watch(paths.scss.src, scssTask);
   watch(paths.js.src, jsTask);
+  watch(paths.images.src, imagesTask);
+  watch(paths.socialIcons.src, svgSpriteTask);
 }
 
 function syncTask() {
@@ -118,13 +139,13 @@ function syncTask() {
 
 exports.default = series(clean,
   parallel(
-    htmlTask, scssTask, jsTask, imagesTask, svgSpriteTask
+    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, svgSpriteTask
   ),
   parallel(watchTask, syncTask)
 );
 
 exports.prod = series(clean,
   series(
-    htmlTask, scssTask, jsTask, imagesTask, svgSpriteTask
+    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, svgSpriteTask
   )
 );

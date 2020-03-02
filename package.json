@@ -23,7 +23,9 @@
     "eslint-plugin-import": "^2.20.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-load-plugins": "^2.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-remove-empty-lines": "^0.1.0",
@@ -47,5 +49,8 @@
     "last 2 versions",
     "IE 11",
     "not dead"
-  ]
+  ],
+  "dependencies": {
+    "svgxuse": "^1.2.6"
+  }
 }
