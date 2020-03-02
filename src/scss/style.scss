@@ -183,7 +183,7 @@ body {
     @include flexbox-row(center);
   }
 
-  &__item {
+  &__col {
     text-align: center;
 
     @include tablet {
@@ -236,6 +236,10 @@ body {
 /** Features */
 .features {
   padding: 5rem 0;
+
+  @include screen-sm {
+    padding: 6.8rem 0;
+  }
 
   &__content {
     align-self: flex-start;
@@ -318,11 +322,13 @@ body {
     text-align: left;
     background-image: url(../images/bg-simplify-section-desktop.svg);
     background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
     padding: 6rem 0;
   }
 
   @include screen-sm {
-    // padding: 5rem 0;
+    padding: 6.1rem 0 6.7rem;
   }
 
   &__title {
@@ -347,15 +353,77 @@ body {
   &__container {
     display: grid;
   }
+
+  &__logo {
+
+  }
+
+  &__copyright {
+    color: $grayish-blue;
+  }
 }
 
+/** Subscription form */
+.form {
+  display: flex;
+
+  &__input {
+    height: 4.4rem;
+    width: 100%;
+    border: 0;
+    border-radius: 2.2rem;
+    font: inherit;
+    color: $dark-blue;
+    padding: 0 2rem;
+    margin-right: 1rem;
+
+    &::placeholder {
+      color: $grayish-blue;
+    }
+  }
+
+  &__button {
+    border: 0;
+    font: {
+      family: inherit;
+      size: 1.3rem;
+      weight: 700;
+    }
+    padding: 0 2.5rem;
+    transition: 0.5s;
+  }
+}
+
+/** Social icons */
+.socials {
+  display: flex;
+
+  &__icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: #fff;
+    transition: 0.5s;
+
+    @include tablet {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__link:hover &__icon {
+    fill: $bright-red;
+  }
+}
+
+/** Attribution */
 .attribution {
   position: absolute;
   bottom: 1rem;
   width: 100%;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.2;
+  color: $grayish-blue;
 
   &__link {
     color: hsl(228, 45%, 44%);
