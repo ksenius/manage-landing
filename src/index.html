@@ -48,10 +48,10 @@
   <!-- Intro -->
   <section class="intro">
     <div class="container flex-row intro__container">
-      <div class="flex-row__item">
+      <div class="flex-row__col">
         <img src="./images/illustration-intro.svg" alt="" class="intro__img">
       </div>
-      <div class="flex-row__item">
+      <div class="flex-row__col">
         <h1 class="heading heading_h1">Bring everyone together to build better products.</h1>
 
         <p class="intro__text">Manage makes it simple for software teams to plan day-to-day tasks while keeping the larger team goals in view.</p>
@@ -65,13 +65,13 @@
   <section class="features">
     <div class="container flex-row">
 
-      <div class="flex-row__item features__content">
+      <div class="flex-row__col features__content">
         <h2 class="heading heading_h2">What’s different about Manage?</h2>
 
         <p class="features__text">Manage provides all the functionality your team needs, without the complexity. Our software is tailor-made for modern digital product teams.</p>
       </div>
 
-      <div class="flex-row__item features__content">
+      <div class="flex-row__col features__content">
         <div class="feature">
           <h3 class="heading heading_h3 feature__title" data-number="01">Track company-wide progress</h3>
           <p class="feature__text">See how your day-to-day tasks fit into the wider vision. Go from tracking progress at the milestone level all the way done to the smallest of details. Never lose sight of the bigger picture again.</p>
@@ -140,23 +140,88 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer__container">
-      Home
-      Pricing
-      Products
-      About Us
-      Careers
-      Community
-      Privacy Policy
+      <!-- Logo -->
+      <div class="logo footer__logo">
+        <a href="/" class="logo__link">
+          <img src="./images/logo.svg" alt="Manage logo" class="logo__img">
+        </a>
+      </div>
 
-      Updates in your inbox…
-      Go
+      <!-- Navigation -->
+      <div class="footer__nav">
+        <ul class="footer__nav-items">
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Home</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Pricing</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Products</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">About Us</a>
+          </li>
+        </ul>
+        <ul class="footer__nav-items">
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Careers</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Community</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="/mock-address/change-me" class="footer__nav-link">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
 
-      Copyright 2020. All Rights Reserved
-    </div>
+      <!-- Social icons -->
+      <div class="socials footer__socials">
+        <a href="/mock-address/change-me" target="_blank" class="link socials__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socials__icon">
+            <use xlink:href="./images/socials-sprite.svg#icon-facebook"></use>
+          </svg>
+        </a>
+        <a href="/mock-address/change-me" target="_blank" class="link socials__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socials__icon">
+            <use xlink:href="./images/socials-sprite.svg#icon-youtube"></use>
+          </svg>
+        </a>
+        <a href="/mock-address/change-me" target="_blank" class="link socials__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socials__icon">
+            <use xlink:href="./images/socials-sprite.svg#icon-twitter"></use>
+          </svg>
+        </a>
+        <a href="/mock-address/change-me" target="_blank" class="link socials__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socials__icon">
+            <use xlink:href="./images/socials-sprite.svg#icon-pinterest"></use>
+          </svg>
+        </a>
+        <a href="/mock-address/change-me" target="_blank" class="link socials__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socials__icon">
+            <use xlink:href="./images/socials-sprite.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Subscription form -->
+      <div class="footer__form">
+        <form action="/mock-address/change-me" method="post" class="form">
+          <input type="email" class="form__input" placeholder="Updates in your inbox…" required>
+          <input type="submit" value="Go" class="button form__button">
+        </form>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer__copyright">Copyright 2020. All Rights Reserved</div>
+    </div><!-- container end -->
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="link attribution__link">Frontend Mentor</a>. 
       Coded by <a href="https://github.com/ksenius" target="_blank" class="link attribution__link">@ksenius</a>.
     </div>
   </footer>
+  <script defer src="./js/vendor.min.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
