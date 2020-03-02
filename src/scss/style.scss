@@ -14,22 +14,52 @@ body {
   padding: 0;
   font: {
     family: 'Be Vietnam', arial, sans-serif;
-    size: 1.6rem;
+    size: 1.5rem;
   };
   line-height: 1.625;
   background: #fff;
   color: $grayish-blue;
   overflow-x: hidden;
+
+  @include screen-sm {
+    font-size: 1.6rem;
+  }
 }
 
 .heading {
   margin: 0;
   color: $dark-blue;
   font-weight: 700;
+  line-height: 1.2;
+
+  &_h1 {
+    font-size: 3.8rem;
+
+    @include screen-sm {
+      font-size: 5.4rem;
+    }
+  }
+
+  &_h2 {
+    font-size: 3rem;
+
+    @include screen-sm {
+      font-size: 3.9rem;
+    }
+  }
+
+  &_h3 {
+    font-size: 100%;
+  }
+
+  &_white {
+    color: #fff;
+  }
 }
 
 .link {
   text-decoration: none;
+  transition: 0.5s;
 }
 
 .screen-reader {
@@ -47,4 +77,291 @@ body {
   width: calc(100% - 50px);
   max-width: 1110px;
   margin: 0 auto;
+}
+
+/** Logo */
+.logo {
+  &__img {
+    width: 85%;
+    display: block;
+    padding-top: 1.3rem;
+
+    @include screen-sm {
+      width: 100%;
+    }
+  }
+}
+
+/** Button */
+.button {
+  @include flexbox-centered('inline');
+  height: 4.4rem;
+  border-radius: 2.2rem;
+  background: $bright-red;
+  font: {
+    size: 1.3rem;
+    weight: 700;
+  }
+  color: #fff;
+  padding: 0 3.2rem;
+  box-shadow: 0 1.6rem 1rem -0.8rem rgba($bright-red, 0.25);
+
+  &:hover {
+    background: rgba($bright-red, 0.75);
+  }
+
+  &_inverted {
+    background: #fff;
+    color: $bright-red;
+
+    &:hover {
+      background: #fff;
+      color: rgba($bright-red, 0.75);
+    }
+  }
+}
+
+/** Header */
+.header {
+  padding: 3.2rem 0;
+
+  @include screen-sm {
+    padding: 5.6rem 0;
+  }
+
+  &__container {
+    @include flexbox-row(center);
+  }
+
+  &__cta-button {
+    @include media(null, $screen-sm) {
+      display: none;
+    }
+  }
+}
+
+/** Primary nav */
+.nav-menu {
+  &__items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: none;
+
+    @include screen-sm {
+      display: flex;
+    }
+  }
+
+  &__item {
+    @include screen-sm {
+      &:not(:last-child) {
+        margin-right: 3.5rem;
+      }
+    }
+  }
+
+  &__link {
+    color: $dark-blue;
+
+    @include screen-sm {
+      font: {
+        size: 1.3rem;
+        weight: 500;
+      }
+    }
+
+    &:hover {
+      color: $grayish-blue;
+    }
+  }
+}
+
+/** Sections flex container */
+.flex-row {
+  @include tablet {
+    @include flexbox-row(center);
+  }
+
+  &__item {
+    text-align: center;
+
+    @include tablet {
+      flex-basis: calc(50% - 15px);
+      text-align: left;
+    }
+  }
+}
+
+/** Intro */
+.intro {
+  padding-bottom: 4rem;
+
+  @include screen-sm {
+    padding: 5.4rem 0;
+  }
+
+  &__container {
+    @include tablet {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__text {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+
+    @include screen-sm {
+      margin: 3.4rem 0 4rem;
+      max-width: 35rem;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+
+    @include tablet {
+      max-width: none;
+      margin: 0;
+      width: 107%;
+      margin-left: -3.5%;
+      margin-bottom: -18px;
+    }
+  }
+}
+
+/** Features */
+.features {
+  padding: 5rem 0;
+
+  &__content {
+    align-self: flex-start;
+  }
+
+  &__text {
+    margin-bottom: 6rem;
+
+    @include screen-sm {
+      max-width: 350px;
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Feature */
+.feature {
+  text-align: left;
+
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+
+  &__title {
+    background: $pale-red;
+    display: flex;
+    height: 3.8rem;
+    line-height: 3.6rem;
+    overflow: hidden;
+    width: calc(100% + 2.5rem);
+    border-radius: 2rem 0 0 2rem;
+
+    @include screen-sm {
+      background: none;
+      width: 100%;
+    }
+
+    &::before {
+      content: attr(data-number);
+      background: $bright-red;
+      color: #fff;
+      width: 6.7rem;
+      height: 100%;
+      text-align: center;
+      border-radius: 1.9rem;
+      margin-right: 1rem;
+
+      @include screen-sm {
+        margin-right: 2.8rem;
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 1rem;
+    margin-bottom: 0;
+
+    @include screen-sm {
+      margin-left: 9.5rem;
+    }
+  }
+}
+
+/** Testimonials */
+.testimonials {
+  display: none;
+}
+
+/** CTA */
+.cta {
+  background-color: $bright-red;
+  background-image: url(../images/bg-simplify-section-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  text-align: center;
+  padding: 8rem 0;
+
+  @include tablet {
+    text-align: left;
+    background-image: url(../images/bg-simplify-section-desktop.svg);
+    background-repeat: no-repeat;
+    padding: 6rem 0;
+  }
+
+  @include screen-sm {
+    // padding: 5rem 0;
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+    font-size: 3.9rem;
+
+    @include tablet {
+      margin-bottom: 0;
+      max-width: 50%;
+    }
+  }
+}
+
+/** Footer */
+.footer {
+  position: relative;
+  background-color: $very-dark-blue;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 4rem 0;
+
+  &__container {
+    display: grid;
+  }
+}
+
+.attribution {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.2;
+
+  &__link {
+    color: hsl(228, 45%, 44%);
+
+    &:hover {
+      color: $bright-red;
+    }
+  }
 }
