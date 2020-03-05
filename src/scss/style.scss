@@ -1,8 +1,6 @@
 @import './helpers/variables';
 @import './helpers/mixins';
 
-@import-normalize;
-
 /** General */
 
 html {
@@ -82,13 +80,9 @@ body {
 /** Logo */
 .logo {
   &__img {
-    width: 85%;
+    width: 100%;
+    max-width: 14.6rem;
     display: block;
-    padding-top: 1.3rem;
-
-    @include screen-sm {
-      width: 100%;
-    }
   }
 }
 
@@ -123,6 +117,7 @@ body {
 
 /** Header */
 .header {
+  position: relative;
   padding: 3.2rem 0;
 
   @include screen-sm {
@@ -133,24 +128,117 @@ body {
     @include flexbox-row(center);
   }
 
+  &__logo {
+    width: 12rem;
+    margin-top: 1.3rem;
+
+    @include tablet {
+      width: auto;
+    }
+  }
+
   &__cta-button {
-    @include media(null, $screen-sm) {
+    display: none;
+
+    @include screen-sm {
+      display: flex;
+    }
+  }
+
+  &__menu-button {
+    @include flexbox-centered;
+    width: 2.5rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    z-index: 99;
+
+    @include screen-sm {
       display: none;
+    }
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__menu-icon {
+    fill: $dark-blue;
+
+    &:hover {
+      fill: $bright-red;
+    }
+
+    &_hamburger {
+      width: 2.5rem;
+      height: 1.8rem;
+    }
+
+    &_close {
+      width: 2.1rem;
+      height: 2rem;
+    }
+  }
+}
+
+/** Popup nav */
+.popup-nav {
+  position: absolute;
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, transparent, rgba(#000, 0.7));
+  z-index: 5;
+
+  @include screen-sm {
+    display: none;
+  }
+
+  &_active {
+    display: block;
+  }
+
+  &__menu {
+    background: #fff;
+    border-radius: 0.5rem;
+    margin: 11rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+  }
+
+  &__link {
+    font: {
+      size: 1.6rem;
+      weight: 700;
+    }
+    color: $dark-blue;
+
+    &:hover {
+      color: $bright-red;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
     }
   }
 }
 
 /** Primary nav */
 .nav-menu {
-  &__items {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: none;
+  display: none;
 
-    @include screen-sm {
-      display: flex;
-    }
+  @include screen-sm {
+    display: block;
+  }
+
+  &__items {
+    @include ul-reset;
+    display: flex;
   }
 
   &__item {
@@ -288,7 +376,7 @@ body {
       border-radius: 1.9rem;
       margin-right: 1rem;
 
-      @include screen-sm {
+      @include screen-md {
         margin-right: 2.8rem;
       }
     }
@@ -298,7 +386,7 @@ body {
     margin-top: 1rem;
     margin-bottom: 0;
 
-    @include screen-sm {
+    @include screen-md {
       margin-left: 9.5rem;
     }
   }
@@ -306,7 +394,79 @@ body {
 
 /** Testimonials */
 .testimonials {
-  display: none;
+  text-align: center;
+  padding: 3rem 0 4rem;
+
+  @include screen-sm {
+    padding-bottom: 10rem;
+  }
+
+  @include screen-md {
+    padding: 7.8rem 0 18rem;
+  }
+
+  &__carousel {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+
+    @include tablet {
+      margin-top: 7.6rem;
+      margin-bottom: 4.8rem;
+    }
+  }
+
+  &__bullets {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__bullet {
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: #fff;
+    border: 1px solid $bright-red;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0 0.3rem;
+    outline: 0;
+
+    &_active {
+      background: $bright-red;
+    }
+  }
+}
+
+/* Testimonial */
+.testimonial {
+  background: $light-gray;
+  margin-top: 3.6rem;
+  height: auto;
+  cursor: grab;
+
+  &__img {
+    width: 7.2rem;
+    height: auto;
+    margin-top: -3.6rem;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    margin: 1.9rem 3rem 4.2rem;
+
+    &::before {
+      content: '“';
+    }
+
+    &::after {
+      content: '”';
+    }
+  }
 }
 
 /** CTA */
@@ -347,19 +507,116 @@ body {
   position: relative;
   background-color: $very-dark-blue;
   color: #fff;
-  font-size: 1.3rem;
-  padding: 4rem 0;
+  font-size: 1.2rem;
+  padding: 5rem 0;
+
+  @include tablet {
+    padding: 6.2rem 0;
+  }
 
   &__container {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'form form'
+      'nav1 nav2'
+      'socials socials'
+      'logo logo'
+      'copyright copyright';
+    grid-gap: 5rem 2rem;
+
+    @include tablet {
+      grid-template-columns: 1fr 0.8fr 0.8fr 24rem;
+      grid-template-areas:
+        'logo nav1 nav2 form'
+        'socials nav1 nav2 copyright';
+      grid-gap: 0 4rem;
+    }
+
+    @include screen-sm {
+      grid-template-columns: 1fr 1fr 1fr 27.2rem;
+      grid-template-areas:
+        'logo nav1 nav2 form'
+        'socials nav1 nav2 copyright';
+    }
+
+    // & > * {
+    //   border: 1px dotted coral;
+    // }
   }
 
   &__logo {
+    grid-area: logo;
+    justify-self: center;
 
+    @include tablet {
+      justify-self: stretch;
+    }
+  }
+
+  &__nav {
+    justify-self: center;
+
+    @include tablet {
+      justify-self: stretch;
+    }
+
+    &_col-1 {
+      grid-area: nav1;
+    }
+
+    &_col-2 {
+      grid-area: nav2;
+    }
+  }
+
+  &__socials {
+    grid-area: socials;
+    justify-self: center;
+
+    @include tablet {
+      align-self: end;
+      justify-self: stretch;
+    }
+  }
+
+  &__form {
+    grid-area: form;
+
+    @include screen-sm {
+      margin-top: 0.3rem;
+    }
   }
 
   &__copyright {
+    grid-area: copyright;
     color: $grayish-blue;
+    justify-self: center;
+
+    @include tablet {
+      align-self: end;
+      justify-self: end;
+    }
+  }
+}
+
+/** Secondary nav */
+.nav-list {
+  @include ul-reset;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 1.3rem;
+    }
+  }
+
+  &__link {
+    color: #fff;
+    font-size: 1.4rem;
+
+    &:hover {
+      color: $bright-red;
+    }
   }
 }
 
@@ -375,7 +632,7 @@ body {
     font: inherit;
     color: $dark-blue;
     padding: 0 2rem;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
 
     &::placeholder {
       color: $grayish-blue;
@@ -389,8 +646,10 @@ body {
       size: 1.3rem;
       weight: 700;
     }
-    padding: 0 2.5rem;
+    text-transform: uppercase;
+    padding: 0 2.3rem;
     transition: 0.5s;
+    box-shadow: none;
   }
 }
 
@@ -399,14 +658,30 @@ body {
   display: flex;
 
   &__icon {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3rem;
+    height: 3rem;
     fill: #fff;
     transition: 0.5s;
 
     @include tablet {
       width: 2rem;
       height: 2rem;
+    }
+  }
+
+  &__link {
+    line-height: 1;
+
+    &:not(:last-child) {
+      margin-right: 2.5rem;
+    }
+
+    @include tablet {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-right: 1.35rem;
+      }
     }
   }
 
