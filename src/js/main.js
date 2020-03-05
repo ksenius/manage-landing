@@ -1,4 +1,4 @@
-function showPopupNav() {
+function togglePopupNav() {
   const hamburgerButton = document.querySelector('.js-hamburger-button');
   const closeButton = document.querySelector('.js-close-button');
   const popupNav = document.querySelector('.js-popup-nav');
@@ -6,22 +6,54 @@ function showPopupNav() {
   const hiddenButtonClass = 'header__menu-button_hidden';
   const popupActiveClass = 'popup-nav_active';
 
+  let popupState = popupNav.dataset.state;
+
+  function togglePopupAndButtons(event) {
+    const button = event.currentTarget;
+
+    button.classList.add(hiddenButtonClass);
+
+    if (popupState === 'closed') {
+      button.nextElementSibling.classList.remove(hiddenButtonClass);
+      document.body.style.overflowY = 'hidden';
+      popupState = 'open';
+    } else {
+      button.previousElementSibling.classList.remove(hiddenButtonClass);
+      document.body.style.overflowY = '';
+      popupState = 'closed';
+    }
+
+    popupNav.classList.toggle(popupActiveClass);
+  }
+
+  function closePopup() {
+    if (popupState === 'open') {
+      hamburgerButton.classList.remove(hiddenButtonClass);
+      closeButton.classList.add(hiddenButtonClass);
+      popupNav.classList.remove(popupActiveClass);
+      document.body.style.overflowY = '';
+      popupState = 'closed';
+    }
+  }
+
   hamburgerButton.addEventListener('click', (event) => {
-    popupNav.classList.add(popupActiveClass);
-
-    event.currentTarget.classList.add(hiddenButtonClass);
-    closeButton.classList.remove(hiddenButtonClass);
-
-    document.body.style.overflowY = 'hidden';
+    togglePopupAndButtons(event);
   });
 
   closeButton.addEventListener('click', (event) => {
-    popupNav.classList.remove(popupActiveClass);
+    togglePopupAndButtons(event);
+  });
 
-    event.currentTarget.classList.add(hiddenButtonClass);
-    hamburgerButton.classList.remove(hiddenButtonClass);
+  popupNav.addEventListener('click', (event) => {
+    if (event.target === popupNav) {
+      closePopup();
+    }
+  });
 
-    document.body.style.overflowY = '';
+  window.addEventListener('resize', () => {
+    if (document.documentElement.clientWidth >= 1000) {
+      closePopup();
+    }
   });
 }
 
@@ -50,7 +82,7 @@ const glideOptions = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  showPopupNav();
+  togglePopupNav();
 
   new Glide('.js-carousel', glideOptions).mount();
 });
