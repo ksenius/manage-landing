@@ -17,7 +17,7 @@ const paths = {
     dest: './build'
   },
   scss: {
-    src: './src/scss/*.scss',
+    src: './src/scss/**/*.scss',
     dest: './build/css'
   },
   js: {
@@ -28,8 +28,8 @@ const paths = {
     src: './src/images/*.*',
     dest: './build/images'
   },
-  socialIcons: {
-    src: './src/images/social-icons/*.svg'
+  icons: {
+    src: './src/images/icons/*.svg'
   }
 }
 
@@ -51,14 +51,18 @@ function htmlTask() {
 function scssTask() {
   let postcssPlugins = [
     postcssNormalize(),
-    postcssPresetEnv()
+    postcssPresetEnv({
+      autoprefixer: { grid: true }
+    })
   ];
 
   if (production) postcssPlugins.push(cssnano());
 
   return src(paths.scss.src)
     .pipe(gp.sourcemaps.init())
-    .pipe(gp.sass())
+    .pipe(gp.sass({
+      includePaths: ['node_modules']
+    }))
     .pipe(gp.postcss(postcssPlugins))
     .pipe(gp.if(production, gp.rename({
       suffix: '.min'
@@ -86,7 +90,10 @@ function jsTask() {
 }
 
 function jsLibsTask() {
-  return src(['./node_modules/svgxuse/svgxuse.min.js'])
+  return src([
+    'node_modules/@glidejs/glide/dist/glide.min.js',
+    'node_modules/svgxuse/svgxuse.min.js'
+  ])
     .pipe(gp.concat('vendor.min.js'))
     .pipe(dest(paths.js.dest));
 }
@@ -97,8 +104,8 @@ function imagesTask() {
     .on('end', browserSync.reload);
 }
 
-function svgSpriteTask() {
-  return src(paths.socialIcons.src)
+function spriteTask() {
+  return src(paths.icons.src)
     .pipe(gp.imagemin([
       gp.imagemin.svgo({
         plugins: [
@@ -113,7 +120,7 @@ function svgSpriteTask() {
     .pipe(gp.svgSprite({
       mode: {
         symbol: {
-          sprite: '../socials-sprite.svg'
+          sprite: '../icons.svg'
         }
       }
     }))
@@ -126,7 +133,7 @@ function watchTask() {
   watch(paths.scss.src, scssTask);
   watch(paths.js.src, jsTask);
   watch(paths.images.src, imagesTask);
-  watch(paths.socialIcons.src, svgSpriteTask);
+  watch(paths.icons.src, spriteTask);
 }
 
 function syncTask() {
@@ -139,13 +146,13 @@ function syncTask() {
 
 exports.default = series(clean,
   parallel(
-    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, svgSpriteTask
+    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, spriteTask
   ),
   parallel(watchTask, syncTask)
 );
 
 exports.prod = series(clean,
   series(
-    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, svgSpriteTask
+    htmlTask, scssTask, jsLibsTask, jsTask, imagesTask, spriteTask
   )
 );
