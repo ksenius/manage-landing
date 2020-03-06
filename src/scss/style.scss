@@ -101,7 +101,7 @@ body {
   box-shadow: 0 1.6rem 1rem -0.8rem rgba($bright-red, 0.25);
 
   &:hover {
-    background: rgba($bright-red, 0.75);
+    background: $pale-bright-red;
   }
 
   &_inverted {
@@ -110,7 +110,7 @@ body {
 
     &:hover {
       background: #fff;
-      color: rgba($bright-red, 0.75);
+      color: $pale-bright-red;
     }
   }
 }
@@ -234,20 +234,7 @@ body {
   display: none;
 
   @include screen-sm {
-    display: block;
-  }
-
-  &__items {
-    @include ul-reset;
     display: flex;
-  }
-
-  &__item {
-    @include screen-sm {
-      &:not(:last-child) {
-        margin-right: 3.5rem;
-      }
-    }
   }
 
   &__link {
@@ -258,6 +245,10 @@ body {
         size: 1.3rem;
         weight: 500;
       }
+
+      &:not(:last-child) {
+        margin-right: 3.5rem;
+      }
     }
 
     &:hover {
@@ -266,7 +257,7 @@ body {
   }
 }
 
-/** Sections flex container */
+/** Flex container */
 .flex-row {
   @include tablet {
     @include flexbox-row(center);
@@ -624,6 +615,7 @@ body {
 /** Subscription form */
 .form {
   display: flex;
+  position: relative;
 
   &__input {
     height: 4.4rem;
@@ -634,6 +626,7 @@ body {
     color: $dark-blue;
     padding: 0 2rem;
     margin-right: 0.8rem;
+    box-sizing: border-box;
 
     &::placeholder {
       color: $grayish-blue;
@@ -651,6 +644,19 @@ body {
     padding: 0 2.3rem;
     transition: 0.5s;
     box-shadow: none;
+    cursor: pointer;
+  }
+
+  &__error {
+    font: {
+      size: 1.1rem;
+      style: italic;
+    };
+    line-height: 1;
+    color: crimson;
+    position: absolute;
+    bottom: -1.8rem;
+    left: 1.5rem;
   }
 }
 

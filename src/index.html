@@ -23,7 +23,7 @@
       </div>
 
       <!-- Menu button -->
-      <button class="header__menu-button js-hamburger-button">
+      <button class="header__menu-button js-hamburger-button" aria-haspopup="true" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" class="header__menu-icon header__menu-icon_hamburger" aria-hidden="true">
           <use href="./images/icons.svg#icon-hamburger"></use>
         </svg>
@@ -31,7 +31,7 @@
       </button>
 
       <!-- Close button -->
-      <button class="header__menu-button header__menu-button_hidden js-close-button">
+      <button class="header__menu-button header__menu-button_hidden js-close-button" aria-haspopup="true" aria-expanded="true">
         <svg xmlns="http://www.w3.org/2000/svg" class="header__menu-icon header__menu-icon_close" aria-hidden="true">
           <use href="./images/icons.svg#icon-close"></use>
         </svg>
@@ -51,23 +51,11 @@
 
       <!-- Desktop navigation -->
       <nav class="nav-menu">
-        <ul class="nav-menu__items">
-          <li class="nav-menu__item">
-            <a href="/mock-address/change-me" class="link nav-menu__link">Pricing</a>
-          </li>
-          <li class="nav-menu__item">
-            <a href="/mock-address/change-me" class="link nav-menu__link">Product</a>
-          </li>
-          <li class="nav-menu__item">
-            <a href="/mock-address/change-me" class="link nav-menu__link">About Us</a>
-          </li>
-          <li class="nav-menu__item">
-            <a href="/mock-address/change-me" class="link nav-menu__link">Careers</a>
-          </li>
-          <li class="nav-menu__item">
-            <a href="/mock-address/change-me" class="link nav-menu__link">Community</a>
-          </li>
-        </ul>
+        <a href="/mock-address/change-me" class="link nav-menu__link">Pricing</a>
+        <a href="/mock-address/change-me" class="link nav-menu__link">Product</a>
+        <a href="/mock-address/change-me" class="link nav-menu__link">About Us</a>
+        <a href="/mock-address/change-me" class="link nav-menu__link">Careers</a>
+        <a href="/mock-address/change-me" class="link nav-menu__link">Community</a>
       </nav>
       <!-- CTA button -->
       <a href="/mock-address/change-me" class="link button header__cta-button">Get Started</a>
@@ -257,9 +245,10 @@
 
       <!-- Subscription form -->
       <div class="footer__form">
-        <form action="/mock-address/change-me" method="post" class="form">
-          <input type="email" class="form__input" placeholder="Updates in your inbox…" required>
+        <form name="subscription" action="/mock-address/change-me" method="post" class="form" novalidate>
+          <input type="email" name="user-email" class="form__input" placeholder="Updates in your inbox…" required>
           <input type="submit" value="Go" class="button form__button">
+          <span class="form__error js-form-error"></span>
         </form>
       </div>
 

@@ -57,6 +57,37 @@ function togglePopupNav() {
   });
 }
 
+function validateSubscriptionForm() {
+  const form = document.forms.subscription;
+  const input = form.elements['user-email'];
+  const error = form.querySelector('.js-form-error');
+
+  const inputErrorClass = 'form__input_error';
+
+  function setError() {
+    input.classList.add(inputErrorClass);
+    error.innerHTML = 'Please insert a valid email';
+  }
+
+  function removeError() {
+    input.classList.remove(inputErrorClass);
+    error.innerHTML = '';
+  }
+
+  form.addEventListener('submit', (event) => {
+    if (!input.validity.valid) {
+      event.preventDefault();
+      setError();
+      // input.value = '';
+      input.focus();
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    removeError();
+  });
+}
+
 const glideOptions = {
   type: 'carousel',
   autoplay: 3000,
@@ -83,6 +114,7 @@ const glideOptions = {
 
 document.addEventListener('DOMContentLoaded', () => {
   togglePopupNav();
+  validateSubscriptionForm();
 
   new Glide('.js-carousel', glideOptions).mount();
 });
