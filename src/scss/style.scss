@@ -124,6 +124,43 @@ body {
     padding: 5.6rem 0;
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 81.4rem;
+    background-image: url("../images/bg-tablet-pattern.svg");
+    background-repeat: no-repeat;
+    background-size: 125% auto;
+    background-position: calc(50% + 25vw) -30vw;
+    top: 0;
+    right: 0;
+    z-index: -1999;
+
+    @include media(475px) {
+      background-size: 57rem auto;
+      background-position: calc(50% + 25vw) -30vw;
+    }
+
+    @include media(530px) {
+      background-position: calc(50% + 20vw) -25vw;
+    }
+
+    @include tablet {
+      background-size: 70% auto;
+      background-position: calc(50% + 40vw) -20vw;
+    }
+
+    @include screen-sm {
+      background-position: calc(50% + 40vw) -12vw;
+    }
+
+    @include screen-md {
+      background-size: auto;
+      background-position: calc(50% + 46rem) -15.4rem;
+    }
+  }
+
   &__container {
     @include flexbox-row(center);
   }
@@ -267,7 +304,7 @@ body {
     text-align: center;
 
     @include tablet {
-      flex-basis: calc(50% - 15px);
+      flex-basis: calc(50% - 1.5rem);
       text-align: left;
     }
   }
@@ -299,7 +336,7 @@ body {
 
   &__img {
     width: 100%;
-    max-width: 400px;
+    max-width: 42rem;
     display: block;
     margin: 0 auto;
 
@@ -308,7 +345,7 @@ body {
       margin: 0;
       width: 107%;
       margin-left: -3.5%;
-      margin-bottom: -18px;
+      margin-bottom: -1.8rem;
     }
   }
 }
@@ -316,9 +353,46 @@ body {
 /** Features */
 .features {
   padding: 5rem 0;
+  position: relative;
 
   @include screen-sm {
     padding: 6.8rem 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 81.4rem;
+    background-image: url("../images/bg-tablet-pattern.svg");
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    background-position: calc(50% + 55vw) top;
+    top: -70vw;
+    right: 0;
+    z-index: -1999;
+
+    @include media(530px) {
+      top: -37rem;
+      background-size: 47.7rem auto;
+      background-position: calc(50% + 60vw) top;
+    }
+
+    @include tablet {
+      top: 20vw;
+      background-size: 70% auto;
+      background-position: calc(0% - 50vw) bottom;
+    }
+
+    @include screen-sm {
+      top: 35vw;
+    }
+
+    @include screen-md {
+      top: 35.4rem;
+      background-size: auto;
+      background-position: calc(50% - 81.6rem) bottom;
+    }
   }
 
   &__content {
@@ -329,7 +403,7 @@ body {
     margin-bottom: 6rem;
 
     @include screen-sm {
-      max-width: 350px;
+      max-width: 35rem;
       margin-top: 3rem;
       margin-bottom: 0;
     }
@@ -422,7 +496,7 @@ body {
     width: 0.8rem;
     height: 0.8rem;
     background: #fff;
-    border: 1px solid $bright-red;
+    border: 0.1rem solid $bright-red;
     border-radius: 50%;
     padding: 0;
     margin: 0 0.3rem;
@@ -474,8 +548,7 @@ body {
     text-align: left;
     background-image: url(../images/bg-simplify-section-desktop.svg);
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: bottom;
+    background-position: calc(50% + 25.5rem) bottom;
     padding: 6rem 0;
   }
 
@@ -531,10 +604,6 @@ body {
         'logo nav1 nav2 form'
         'socials nav1 nav2 copyright';
     }
-
-    // & > * {
-    //   border: 1px dotted coral;
-    // }
   }
 
   &__logo {

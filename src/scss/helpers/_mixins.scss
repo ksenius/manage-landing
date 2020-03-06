@@ -11,11 +11,7 @@
 }
 
 @mixin media($min, $max: null) {
-  @if $min == null {
-    @media (max-width: $max - 1px) { @content; }
-  }
-
-  @else if $max == null {
+  @if $max == null {
     @media (min-width: $min) { @content; }
   }
 
