@@ -1,8 +1,7 @@
 {
   "name": "manage-landing",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Frontend Mentor challenge.",
   "scripts": {
     "start": "gulp",
     "build": "gulp prod --production",
@@ -53,5 +52,13 @@
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "svgxuse": "^1.2.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksenius/manage-landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ksenius/manage-landing/issues"
+  },
+  "homepage": "https://github.com/ksenius/manage-landing#readme"
 }
