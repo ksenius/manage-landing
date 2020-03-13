@@ -90,8 +90,9 @@ function validateSubscriptionForm() {
 
 const glideOptions = {
   type: 'carousel',
-  autoplay: 3000,
+  autoplay: 4000,
   hoverpause: true,
+  animationDuration: 1000,
   gap: 30,
   peek: -120,
   perView: 3,
@@ -116,5 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
   togglePopupNav();
   validateSubscriptionForm();
 
-  new Glide('.js-carousel', glideOptions).mount();
+  const testimonialsCarousel = new Glide('.js-carousel', glideOptions);
+
+  testimonialsCarousel.on('mount.after', () => {
+    const slides = document.querySelectorAll('.glide__slide');
+
+    slides.forEach((slide) => {
+      const isClone = slide.classList.contains('glide__slide--clone');
+
+      if (isClone) {
+        slide.setAttribute('aria-hidden', true);
+      }
+    });
+  });
+
+  testimonialsCarousel.mount();
 });

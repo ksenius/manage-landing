@@ -481,6 +481,10 @@ body {
     }
   }
 
+  &__slides {
+    margin: 0;
+  }
+
   &__bullets {
     display: flex;
     justify-content: center;

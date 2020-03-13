@@ -23,7 +23,7 @@
       </div>
 
       <!-- Menu button -->
-      <button class="header__menu-button js-hamburger-button" aria-haspopup="true" aria-expanded="false">
+      <button class="header__menu-button js-hamburger-button" aria-haspopup="true" aria-expanded="false" aria-controls="popup-nav">
         <svg xmlns="http://www.w3.org/2000/svg" class="header__menu-icon header__menu-icon_hamburger" aria-hidden="true">
           <use href="./images/icons.svg#icon-hamburger"></use>
         </svg>
@@ -31,7 +31,7 @@
       </button>
 
       <!-- Close button -->
-      <button class="header__menu-button header__menu-button_hidden js-close-button" aria-haspopup="true" aria-expanded="true">
+      <button class="header__menu-button header__menu-button_hidden js-close-button" aria-haspopup="true" aria-expanded="true" aria-controls="popup-nav">
         <svg xmlns="http://www.w3.org/2000/svg" class="header__menu-icon header__menu-icon_close" aria-hidden="true">
           <use href="./images/icons.svg#icon-close"></use>
         </svg>
@@ -39,7 +39,7 @@
       </button>
 
       <!-- Mobile navigation -->
-      <div class="popup-nav js-popup-nav" data-state="closed">
+      <div id="popup-nav" class="popup-nav js-popup-nav" data-state="closed">
         <nav class="popup-nav__menu">
           <a href="/mock-address/change-me" class="link popup-nav__link">Pricing</a>
           <a href="/mock-address/change-me" class="link popup-nav__link">Products</a>
@@ -62,110 +62,112 @@
     </div>
   </header>
 
-  <!-- Intro -->
-  <section class="intro">
-    <div class="container flex-row intro__container">
-      <div class="flex-row__col">
-        <img src="./images/illustration-intro.svg" alt="" class="intro__img">
+  <main class="main-content">
+    <!-- Intro -->
+    <section class="intro">
+      <div class="container flex-row intro__container">
+        <div class="flex-row__col">
+          <img src="./images/illustration-intro.svg" alt="" class="intro__img">
+        </div>
+        <div class="flex-row__col">
+          <h1 class="heading heading_h1">Bring everyone together to build better products.</h1>
+
+          <p class="intro__text">Manage makes it simple for software teams to plan day-to-day tasks while keeping the larger team goals in view.</p>
+
+          <a href="/mock-address/change-me" class="link button">Get Started</a>
+        </div>
       </div>
-      <div class="flex-row__col">
-        <h1 class="heading heading_h1">Bring everyone together to build better products.</h1>
+    </section>
+    
+    <!-- Features -->
+    <section class="features">
+      <div class="container flex-row">
 
-        <p class="intro__text">Manage makes it simple for software teams to plan day-to-day tasks while keeping the larger team goals in view.</p>
+        <div class="flex-row__col features__content">
+          <h2 class="heading heading_h2">What’s different about Manage?</h2>
 
-        <a href="/mock-address/change-me" class="link button">Get Started</a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Features -->
-  <section class="features">
-    <div class="container flex-row">
-
-      <div class="flex-row__col features__content">
-        <h2 class="heading heading_h2">What’s different about Manage?</h2>
-
-        <p class="features__text">Manage provides all the functionality your team needs, without the complexity. Our software is tailor-made for modern digital product teams.</p>
-      </div>
-
-      <div class="flex-row__col features__content">
-        <div class="feature">
-          <h3 class="heading heading_h3 feature__title" data-number="01">Track company-wide progress</h3>
-          <p class="feature__text">See how your day-to-day tasks fit into the wider vision. Go from tracking progress at the milestone level all the way done to the smallest of details. Never lose sight of the bigger picture again.</p>
+          <p class="features__text">Manage provides all the functionality your team needs, without the complexity. Our software is tailor-made for modern digital product teams.</p>
         </div>
 
-        <div class="feature">
-          <h3 class="heading heading_h3 feature__title" data-number="02">Advanced built-in reports</h3>
-          <p class="feature__text">Set internal delivery estimates and track progress toward company goals. Our customisable dashboard helps you build out the reports you need to keep key stakeholders informed.</p>
+        <div class="flex-row__col features__content">
+          <div class="feature">
+            <h3 class="heading heading_h3 feature__title" data-number="01">Track company-wide progress</h3>
+            <p class="feature__text">See how your day-to-day tasks fit into the wider vision. Go from tracking progress at the milestone level all the way done to the smallest of details. Never lose sight of the bigger picture again.</p>
+          </div>
+
+          <div class="feature">
+            <h3 class="heading heading_h3 feature__title" data-number="02">Advanced built-in reports</h3>
+            <p class="feature__text">Set internal delivery estimates and track progress toward company goals. Our customisable dashboard helps you build out the reports you need to keep key stakeholders informed.</p>
+          </div>
+          
+          <div class="feature">
+            <h3 class="heading heading_h3 feature__title" data-number="03">Everything you need in one place</h3>
+            <p class="feature__text">Stop jumping from one service to another to communicate, store files, track tasks and share documents. Manage offers an all-in-one team productivity solution.</p>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h2 class="heading heading_h2 testimonials__title">What they’ve said</h2>
+
+      <div class="glide testimonials__carousel js-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
+        <div class="glide__track" data-glide-el="track">
+          <ul id="testimonials__slides" class="glide__slides testimonials__slides">
+            <li class="glide__slide testimonial">
+              <img src="./images/avatar-anisha.png" alt="" class="testimonial__img">
         
-        <div class="feature">
-          <h3 class="heading heading_h3 feature__title" data-number="03">Everything you need in one place</h3>
-          <p class="feature__text">Stop jumping from one service to another to communicate, store files, track tasks and share documents. Manage offers an all-in-one team productivity solution.</p>
+              <h3 class="heading heading_h3">Anisha Li</h3>
+        
+              <blockquote class="testimonial__text">Manage has supercharged our team’s workflow. The ability to maintain visibility on larger milestones at all times keeps everyone motivated.</blockquote>
+            </li>
+        
+            <li class="glide__slide testimonial">
+              <img src="./images/avatar-ali.png" alt="" class="testimonial__img">
+        
+              <h3 class="heading heading_h3">Ali Bravo</h3>
+        
+              <blockquote class="testimonial__text">We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.</blockquote>
+            </li>
+        
+            <li class="glide__slide testimonial">
+              <img src="./images/avatar-richard.png" alt="" class="testimonial__img">
+        
+              <h3 class="heading heading_h3">Richard Watts</h3>
+        
+              <blockquote class="testimonial__text">Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!</blockquote>
+            </li>
+        
+            <li class="glide__slide testimonial">
+              <img src="./images/avatar-shanai.png" alt="" class="testimonial__img">
+        
+              <h3 class="heading heading_h3">Shanai Gough</h3>
+        
+              <blockquote class="testimonial__text">Their software allows us to track, manage and collaborate on our projects from anywhere. It keeps the whole team in-sync without being intrusive.</blockquote>
+            </li>
+          </ul>
+        </div>
+
+        <div class="glide__bullets testimonials__bullets" data-glide-el="controls[nav]">
+          <button class="testimonials__bullet" data-glide-dir="=0" aria-controls="testimonials__slides" aria-label="Slide 1"></button>
+          <button class="testimonials__bullet" data-glide-dir="=1" aria-controls="testimonials__slides" aria-label="Slide 2"></button>
+          <button class="testimonials__bullet" data-glide-dir="=2" aria-controls="testimonials__slides" aria-label="Slide 3"></button>
+          <button class="testimonials__bullet" data-glide-dir="=3" aria-controls="testimonials__slides" aria-label="Slide 4"></button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2 class="heading heading_h2 testimonials__title">What they’ve said</h2>
+      <a href="/mock-address/change-me" class="link button">Get Started</a>
+    </section>
 
-    <div class="glide testimonials__carousel js-carousel">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-          <li class="glide__slide testimonial">
-            <img src="./images/avatar-anisha.png" alt="" class="testimonial__img">
-      
-            <h3 class="heading heading_h3">Anisha Li</h3>
-      
-            <blockquote class="testimonial__text">Manage has supercharged our team’s workflow. The ability to maintain visibility on larger milestones at all times keeps everyone motivated.</blockquote>
-          </li>
-      
-          <li class="glide__slide testimonial">
-            <img src="./images/avatar-ali.png" alt="" class="testimonial__img">
-      
-            <h3 class="heading heading_h3">Ali Bravo</h3>
-      
-            <blockquote class="testimonial__text">We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.</blockquote>
-          </li>
-      
-          <li class="glide__slide testimonial">
-            <img src="./images/avatar-richard.png" alt="" class="testimonial__img">
-      
-            <h3 class="heading heading_h3">Richard Watts</h3>
-      
-            <blockquote class="testimonial__text">Manage allows us to provide structure and process. It keeps us organized and focused. I can’t stop recommending them to everyone I talk to!</blockquote>
-          </li>
-      
-          <li class="glide__slide testimonial">
-            <img src="./images/avatar-shanai.png" alt="" class="testimonial__img">
-      
-            <h3 class="heading heading_h3">Shanai Gough</h3>
-      
-            <blockquote class="testimonial__text">Their software allows us to track, manage and collaborate on our projects from anywhere. It keeps the whole team in-sync without being intrusive.</blockquote>
-          </li>
-        </ul>
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container flex-row">
+        <h2 class="heading heading_h2 heading_white cta__title">Simplify how your team works today.</h2>
+        <a href="/mock-address/change-me" class="link button button_inverted">Get Started</a>
       </div>
-
-      <div class="glide__bullets testimonials__bullets" data-glide-el="controls[nav]">
-        <button class="testimonials__bullet" data-glide-dir="=0"></button>
-        <button class="testimonials__bullet" data-glide-dir="=1"></button>
-        <button class="testimonials__bullet" data-glide-dir="=2"></button>
-        <button class="testimonials__bullet" data-glide-dir="=3"></button>
-      </div>
-    </div>
-
-    <a href="/mock-address/change-me" class="link button">Get Started</a>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container flex-row">
-      <h2 class="heading heading_h2 heading_white cta__title">Simplify how your team works today.</h2>
-      <a href="/mock-address/change-me" class="link button button_inverted">Get Started</a>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -242,7 +244,8 @@
       <!-- Subscription form -->
       <div class="footer__form">
         <form name="subscription" action="/mock-address/change-me" method="post" class="form" novalidate>
-          <input type="email" name="user-email" class="form__input" placeholder="Updates in your inbox…" required>
+          <label for="user-email" class="screen-reader">Email</label>
+          <input id="user-email" type="email" name="user-email" class="form__input" placeholder="Updates in your inbox…" required>
           <input type="submit" value="Go" class="button form__button">
           <span class="form__error js-form-error"></span>
         </form>
