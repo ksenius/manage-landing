@@ -1,25 +1,21 @@
 # Manage landing page
 
-Frontend Mentor challenge solution: Responsive landing page built using CSS flexbox, CSS grid, vanilla JS and Gulp.
+This project is my solution to an intermediate level [Frontend Mentor](https://www.frontendmentor.io) challenge I implemented to practice and improve my frontend skills.
 
-[Glide.js](https://glidejs.com/) has been used for the testimonials carousel.
+Built using CSS Flexbox, CSS Grid, SCSS, vanilla JavaScript and Gulp as a build tool.
 
-[Live Preview](https://manage-landing.now.sh/) · [Solution Page](https://www.frontendmentor.io/solutions/manage-landing-page-build-with-gulp-phncMwil)
+[Live Page](https://manage-landing.now.sh)
 
-## NPM Scripts
+## Project Setup
 
-``` bash
-# Install dependencies
-npm install
+Clone the repository and run `npm install` to install the dependencies.
 
-# Serve on localhost:3000
-npm start
+### Available Scripts
 
-# Build for production
-npm run build
+`npm start` - serves the project on *localhost:3000*.
 
-# Lint JavaScript with ESLint
-npm run lint:js
+`npm run build` - builds the project for production.
 
-# Lint SCSS with Stylelint
-npm run lint:scss
+`npm run lint:js` - lints JavaScript code with ESLint.
+
+`npm run lint:scss` - lints SCSS code with Stylelint.
